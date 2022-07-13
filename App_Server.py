@@ -93,10 +93,12 @@ if __name__ == '__main__':
                 tmp_bytes = pack(">i",sensor_val1_int)
                 mes_byte.append(tmp_bytes[2])
                 mes_byte.append(tmp_bytes[3])
+                sensor_val1_int = (3.3 * (sensor_val1_int - 9) / (3322.77 - 9))
                 print("CH1:",sensor_val1, sensor_val1_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
                 tmp_bytes = pack(">i",sensor_val2_int)
                 mes_byte.append(tmp_bytes[2])
                 mes_byte.append(tmp_bytes[3])
+                sensor_val2_int = (3.3 * (sensor_val2_int - 10) / (3312.793 - 10))
                 print("CH2:",sensor_val2, sensor_val2_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
 
                 tmp_bytes = pack(">i", cmd.Mode)
