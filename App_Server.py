@@ -11,14 +11,14 @@ import server
 import RPi.GPIO as GPIO
 
 try:
-    import ADCDACPI
+    import ADCDACPi
 except ImportError:
     print("Failed to import ADCDACPi from python system path")
     print("Importing from parent folder instead")
     try:
         import sys
         sys.path.append('..')
-        import ADCDACPI
+        import ADCDACPi
     except ImportError:
         raise ImportError(
             "Failed to import library from parent folder")
@@ -35,7 +35,7 @@ time_count = 0
 
 print("IP Address: {0}".format(server.get_ip()))
 
-adcdac = ADCDACPI(1)
+adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
 
 PRESSURE_LIMIT1 = 3.13
