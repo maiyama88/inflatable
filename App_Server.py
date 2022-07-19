@@ -88,9 +88,9 @@ if __name__ == '__main__':
                 mes_byte.append(tmp_bytes[3])
 
                 # ADC IF
-                sensor_val1 = (3.3 * (sensor_val1_int - 9) / (3322.77 - 9))
+                sensor_val1 = (3.3 * (sensor_val1 - 9) / (3322.77 - 9))
                 sensor_val1_int = int(sensor_val1 * 1000)
-                sensor_val2 = (3.3 * (sensor_val2_int - 10) / (3312.793 - 10))
+                sensor_val2 = (3.3 * (sensor_val2 - 10) / (3312.793 - 10))
                 sensor_val2_int = int(sensor_val2 * 1000)
                 tmp_bytes = pack(">i",sensor_val1_int)
                 mes_byte.append(tmp_bytes[2])
