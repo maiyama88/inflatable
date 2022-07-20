@@ -14,7 +14,6 @@ except ImportError:
     raise ImportError(
         "spidev not found.")
 
-
 class ADCDACPi(object):
     """
     Based on the Microchip MCP3202 and MCP4822
