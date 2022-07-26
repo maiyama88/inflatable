@@ -11,17 +11,16 @@ import server
 import RPi.GPIO as GPIO
 
 try:
-    import ADCDACPi
+    from ADCDACPI import ADCDACPi
 except ImportError:
     print("Failed to import ADCDACPi from python system path")
     print("Importing from parent folder instead")
     try:
         import sys
         sys.path.append('..')
-        import ADCDACPi
+        from ADCDACPI import ADCDACPi
     except ImportError:
-        raise ImportError(
-            "Failed to import library from parent folder")
+        raise ImportError ("Failed to import library from parent folder")
 
 LED_PIN = 22
 GPIO.setmode(GPIO.BCM)
