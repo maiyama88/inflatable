@@ -38,7 +38,7 @@ class ADCDACPi(object):
 
     __dacMaxOutput__ = {
         1: 2.048,  # This is Vref
-        2: 3.3  # This is the voltage of the 3.3V rail
+        2: 3.5  # This is the voltage of the 3.3V rail
     }
 
     # public methods
