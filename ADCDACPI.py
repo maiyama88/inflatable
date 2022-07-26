@@ -20,7 +20,7 @@ class ADCDACPi(object):
     """
 
     # variables
-    __adcrefvoltage = 3.3  # reference voltage for the ADC chip.
+    __adcrefvoltage = 3.8  # reference voltage for the ADC chip.
 
     # Define SPI bus and init
     spiADC = spidev.SpiDev()
@@ -38,7 +38,7 @@ class ADCDACPi(object):
 
     __dacMaxOutput__ = {
         1: 2.048,  # This is Vref
-        2: 3.5  # This is the voltage of the 3.3V rail
+        2: 3.8  # This is the voltage of the 3.3V rail
     }
 
     # public methods
