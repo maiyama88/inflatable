@@ -37,7 +37,7 @@ class ADCDACPi(object):
     # The following table is in the form <gain factor>:<max voltage>
 
     __dacMaxOutput__ = {
-        1: 2.048,  # This is Vref
+        1: 3.3,  # This is Vref
         2: 3.8  # This is the voltage of the 3.3V rail
     }
 
