@@ -32,7 +32,7 @@ LED_PIN_ON = 0
 tlm_time_start = int(time.time())
 time_count = 0
 
-print("IP Address: {0}".format(server.get_ip()))
+print("IP Address: {192.168.11.210}".format(server.get_ip()))
 
 adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
@@ -87,18 +87,18 @@ if __name__ == '__main__':
                 mes_byte.append(tmp_bytes[3])
 
                 # ADC IF
-                sensor_val1_1 = (3.3 * (sensor_val1 - 9) / (3323 - 9))
-                sensor_val1_int = int(sensor_val1_1 * 1000)
-                sensor_val2_2 = (3.3 * (sensor_val2 - 10) / (3313 - 10))
-                sensor_val2_int = int(sensor_val2_2 * 1000)
+                
+                sensor_val1_int = int(sensor_val1 * 1000)
+                
+                sensor_val2_int = int(sensor_val2 * 1000)
                 tmp_bytes = pack(">i",sensor_val1_int)
                 mes_byte.append(tmp_bytes[2])
                 mes_byte.append(tmp_bytes[3])
-                print("CH1:",sensor_val1_1, sensor_val1_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
+                print("CH1:",sensor_val1, sensor_val1_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
                 tmp_bytes = pack(">i",sensor_val2_int)
                 mes_byte.append(tmp_bytes[2])
                 mes_byte.append(tmp_bytes[3])
-                print("CH2:",sensor_val2_2, sensor_val2_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
+                print("CH2:",sensor_val2, sensor_val2_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
 
                 tmp_bytes = pack(">i", cmd.Mode)
                 mes_byte.append(tmp_bytes[3])
