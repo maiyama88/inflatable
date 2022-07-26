@@ -77,7 +77,6 @@ class ADCDACPi(object):
         if (mode > 1) or (mode < 0):
             raise ValueError('read_adc_voltage: mode out of range')
         raw = self.read_adc_raw(channel, mode)
-        raw = (3.3 * (self.__adcrefvoltage - 9) / (3323 - 9))
         voltage = float((self.__adcrefvoltage / 4096) * raw)
         return voltage
 
