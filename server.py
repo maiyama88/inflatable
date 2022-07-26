@@ -25,7 +25,7 @@ def get_ip():
         ni.ifaddresses(nic)
         try:
             ip = ni.ifaddresses(nic)[ni.AF_INET][0]['addr']
-            if ip not in ["127.0.0.1"]:
+            if ip not in ["192.168.11.210"]:
                 #result.append(ip)
                 return ip
         except KeyError as err:
@@ -139,11 +139,11 @@ def server_init():
 
     #host = socket.gethostbyname(socket.gethostname())
     #print(host)
-    #host = '192.168.1.204'
+    #host = '192.168.11.210'
     host = get_ip()
     port = 10000
     serversocket.bind((host, port))
-    #serversocket.bind(('192.168.1.201', 10000))
+    #serversocket.bind(('192.168.11.210', 10000))
 
     serversocket.listen(128)
 
