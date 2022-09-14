@@ -37,8 +37,8 @@ print("IP Address: {0}".format(server.get_ip()))
 adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
 
-PRESSURE_LIMIT1 = 3.3     #元は3.13
-PRESSURE_LIMIT2 = 3.3     #元は3.2
+PRESSURE_LIMIT1 = 3.13     
+PRESSURE_LIMIT2 = 3.2     
 
 def my_hex(a):
     if a < 0x10 and a >= 0x00:
@@ -90,7 +90,6 @@ if __name__ == '__main__':
                 # ADC IF
                 
                 sensor_val1_int = int(sensor_val1 * 1000)
-                
                 sensor_val2_int = int(sensor_val2 * 1000)
                 tmp_bytes = pack(">i",sensor_val1_int)
                 mes_byte.append(tmp_bytes[2])
