@@ -9,10 +9,10 @@ Based on the Microchip MCP3202 and MCP4822
 from __future__ import absolute_import, division, print_function, \
                                                     unicode_literals
 try:
-    import spidev
+    import i2cdev
 except ImportError:
     raise ImportError(
-        "spidev not found.")
+        "i2cdev not found.")
 
 class ADCDACPi(object):
     """
@@ -23,13 +23,13 @@ class ADCDACPi(object):
     __adcrefvoltage = 3.3  # reference voltage for the ADC chip.
 
     # Define SPI bus and init
-    spiADC = spidev.SpiDev()
-    spiADC.open(0, 0)
-    spiADC.max_speed_hz = (1100000)
+    i2cADC = i2cdev.SpiDev()
+    i2cADC.open(0, 0)
+    i2cADC.max_speed_hz = (1100000)
 
-    spiDAC = spidev.SpiDev()
-    spiDAC.open(0, 1)
-    spiDAC.max_speed_hz = (20000000)
+    i2cDAC = i2cdev.SpiDev()
+    i2cDAC.open(0, 1)
+    i2cDAC.max_speed_hz = (20000000)
 
     dactx = [0, 0]
 
@@ -97,13 +97,13 @@ class ADCDACPi(object):
         if (mode > 1) or (mode < 0):
             raise ValueError('read_adc_voltage: mode out of range')
         if mode == 0:
-            raw = self.spiADC.xfer2([1, (1 + channel) << 6, 0])
+            raw = self.i2cADC.xfer2([1, (1 + channel) << 6, 0])
             ret = ((raw[1] & 0x0F) << 8) + (raw[2])
         if mode == 1:
             if channel == 1:
-                raw = self.spiADC.xfer2([1, 0x00, 0])
+                raw = self.i2cADC.xfer2([1, 0x00, 0])
             else:
-                raw = self.spiADC.xfer2([1, 0x40, 0])
+                raw = self.i2cADC.xfer2([1, 0x40, 0])
             ret = ((raw[1]) << 8) + (raw[2])
         return ret
 
@@ -174,5 +174,5 @@ class ADCDACPi(object):
                              1 << 4)
 
         # Write to device
-        self.spiDAC.xfer2(self.dactx)
+        self.i2cDAC.xfer2(self.dactx)
         return
