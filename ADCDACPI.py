@@ -9,10 +9,10 @@ Based on the Microchip MCP3202  (new MCP3426)
 from __future__ import absolute_import, division, print_function, \
                                                     unicode_literals
 try:
-    import MCP3426_c
+    import MCP3426
 except ImportError:
     raise ImportError(
-        "MCP3426_c not found.")
+        "MCP3426 not found.")
 
 
 
