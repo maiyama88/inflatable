@@ -34,8 +34,8 @@ time_count = 0
 
 print("IP Address: {0}".format(server.get_ip()))
 
-adcdac = MCP3426(1)
-adcdac.set_adc_refvoltage(3.3)
+adc = MCP3426(1)
+adc.set_adc_refvoltage(3.3)
 
 PRESSURE_LIMIT1 = 3.13     
 PRESSURE_LIMIT2 = 3.2     
@@ -68,9 +68,9 @@ if __name__ == '__main__':
             time_count += 1
             if (time_count % 5000) == 0:
                 # Pressure Check
-                sensor_val1_1 = adcdac.read_adc_voltage(1, 0)
+                sensor_val1_1 = adc.read_adc_voltage(1, 0)
                 sensor_val1 = (3.3 * (sensor_val1_1 -9) / (3322.77 - 9)) 
-                sensor_val2_2 = adcdac.read_adc_voltage(2, 0)
+                sensor_val2_2 = adc.read_adc_voltage(2, 0)
                 sensor_val2 = (3.3 * (sensor_val2_2 -10) / (3312.79 - 10))
                 if sensor_val2 > PRESSURE_LIMIT1 and cmd.Mode == 2:
                     cmd.idle_mode()
