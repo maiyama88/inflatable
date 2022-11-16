@@ -19,31 +19,32 @@ class ADCDACPi(object):
     Based on the Microchip MCP3202 and MCP4822 (new MCP3426)
     """
 
-import smbus
-import time
+    import smbus
+    import time
 
-# Get I2C bus
-bus = smbus.SMBus(1)
+    # Get I2C bus
+    bus = smbus.SMBus(1)
 
-# I2C address of the device
-MCP3426_DEFAULT_ADDRESS				= 0x68
+    # I2C address of the device
+    MCP3426_DEFAULT_ADDRESS				= 0x68
 
-# MCP3426 Configuration Command Set
-MCP3426_CMD_NEW_CNVRSN				= 0x80 # Initiate a new conversion(One-Shot Conversion mode only)
-MCP3426_CMD_CHNL_1					= 0x00 # Channel-1 Selected
-MCP3426_CMD_CHNL_2					= 0x20 # Channel-2 Selected
-MCP3426_CMD_MODE_CONT				= 0x10 # Continuous Conversion Mode
-MCP3426_CMD_MODE_ONESHOT			= 0x00 # One-Shot Conversion Mode
-MCP3426_CMD_SPS_240					= 0x00 # 240 SPS (12-bit)
-MCP3426_CMD_SPS_60					= 0x04 # 60 SPS (14-bit)
-MCP3426_CMD_SPS_15					= 0x08 # 15 SPS (16-bit)
-MCP3426_CMD_GAIN_1					= 0x00 # PGA Gain = 1V/V
-MCP3426_CMD_GAIN_2					= 0x01 # PGA Gain = 2V/V
-MCP3426_CMD_GAIN_4					= 0x02 # PGA Gain = 4V/V
-MCP3426_CMD_GAIN_8					= 0x03 # PGA Gain = 8V/V
-MCP3426_CMD_READ_CNVRSN				= 0x00 # Read Conversion Result Data
+    # MCP3426 Configuration Command Set
+    MCP3426_CMD_NEW_CNVRSN				= 0x80 # Initiate a new conversion(One-Shot Conversion mode only)
+    MCP3426_CMD_CHNL_1					= 0x00 # Channel-1 Selected
+    MCP3426_CMD_CHNL_2					= 0x20 # Channel-2 Selected
+    MCP3426_CMD_MODE_CONT				= 0x10 # Continuous Conversion Mode
+    MCP3426_CMD_MODE_ONESHOT			= 0x00 # One-Shot Conversion Mode
+    MCP3426_CMD_SPS_240					= 0x00 # 240 SPS (12-bit)
+    MCP3426_CMD_SPS_60					= 0x04 # 60 SPS (14-bit)
+    MCP3426_CMD_SPS_15					= 0x08 # 15 SPS (16-bit)
+    MCP3426_CMD_GAIN_1					= 0x00 # PGA Gain = 1V/V
+    MCP3426_CMD_GAIN_2					= 0x01 # PGA Gain = 2V/V
+    MCP3426_CMD_GAIN_4					= 0x02 # PGA Gain = 4V/V
+    MCP3426_CMD_GAIN_8					= 0x03 # PGA Gain = 8V/V
+    MCP3426_CMD_READ_CNVRSN				= 0x00 # Read Conversion Result Data
 
 class MCP3426():
+    
 	def set_channel(self):
 		"""Select the Channel user want to use from 1-2"""
 		self.channel = int(input("Enter the Channel No. = "))
