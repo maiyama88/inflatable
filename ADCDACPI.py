@@ -9,7 +9,7 @@ Based on the Microchip MCP3202 and MCP4822 (new MCP3426)
 from __future__ import absolute_import, division, print_function, \
                                                     unicode_literals
 try:
-    import spidev
+    import i2cdev
 except ImportError:
     raise ImportError(
         "i2cdev not found.")
