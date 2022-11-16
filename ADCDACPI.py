@@ -71,7 +71,7 @@ class MCP3426():
 		if raw_adc > 2047 :
 			raw_adc -= 4095
 		
-		return {'r' : raw_adc}
+		return 
 
 
 
