@@ -19,6 +19,7 @@ class ADCDACPi(object):
     """
     Based on the Microchip MCP3202 and MCP4822 (new MCP3426)
     """
+import time
 import Adafruit_ADS1x15
 # ADS1015の設定をします
 ads = Adafruit_ADS1x15.ADS1015(address=0x68, busnum=1)
