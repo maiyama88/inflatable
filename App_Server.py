@@ -11,14 +11,14 @@ import server
 import RPi.GPIO as GPIO
 
 try:
-    from ADCDACPI import ADCDACPi
+    from ADCDACPI import MCP3426 
 except ImportError:
     print("Failed to import ADCDACPi from python system path")
     print("Importing from parent folder instead")
     try:
         import sys
         sys.path.append('..')
-        from ADCDACPI import ADCDACPi
+        from ADCDACPI import MCP3426
     except ImportError:
         raise ImportError ("Failed to import library from parent folder")
 
