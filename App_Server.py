@@ -34,7 +34,7 @@ time_count = 0
 
 print("IP Address: {0}".format(server.get_ip()))
 
-adcdac = ADCDACPi(1)
+adcdac = MCP3426(1)
 adcdac.set_adc_refvoltage(3.3)
 
 PRESSURE_LIMIT1 = 3.13     
