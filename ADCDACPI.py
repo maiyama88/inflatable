@@ -40,8 +40,10 @@ MCP3426_CMD_GAIN_4					= 0x02 # PGA Gain = 4V/V
 MCP3426_CMD_GAIN_8					= 0x03 # PGA Gain = 8V/V
 MCP3426_CMD_READ_CNVRSN				= 0x00 # Read Conversion Result Data
 
+
 class MCP3426():
-    
+
+	
 	def set_channel(self):
 		"""Select the Channel user want to use from 1-2"""
 		self.channel = int(input("Enter the Channel No. = "))
@@ -69,10 +71,4 @@ class MCP3426():
 		if raw_adc > 2047 :
 			raw_adc -= 4095
 		
-		return {'r' : raw_adc}
-
-	
-
-
-
-
+		return 
