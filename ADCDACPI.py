@@ -3,26 +3,26 @@
 ================================================
 ABElectronics ADCDAC Pi Analogue to Digital / Digital to Analogue Converter
 ================================================
-Based on the Microchip MCP3202 and MCP4822
+Based on the Microchip MCP3202 and MCP4822 (new MCP3426)
 """
 
 from __future__ import absolute_import, division, print_function, \
                                                     unicode_literals
 try:
-    import i2cdev
+    import spidev
 except ImportError:
     raise ImportError(
         "i2cdev not found.")
 
 class ADCDACPi(object):
     """
-    Based on the Microchip MCP3202 and MCP4822
+    Based on the Microchip MCP3202 and MCP4822 (new MCP3426)
     """
 
     # variables
     __adcrefvoltage = 3.3  # reference voltage for the ADC chip.
 
-    # Define SPI bus and init
+    # Define SPI (new i2c) bus and init
     i2cADC = i2cdev.i2cDev()
     i2cADC.open(0, 0)
     i2cADC.max_speed_hz = (1100000)
