@@ -23,11 +23,11 @@ class ADCDACPi(object):
     __adcrefvoltage = 3.3  # reference voltage for the ADC chip.
 
     # Define SPI (new i2c) bus and init
-    i2cADC = i2cdev.I2C_MSG_S()
+    i2cADC = i2cdev.I2C_MSG_P()
     i2cADC.open(0, 0)
     i2cADC.max_speed_hz = (1100000)
 
-    i2cDAC = i2cdev.I2C_MSG_S()
+    i2cDAC = i2cdev.I2C_MSG_P()
     i2cDAC.open(0, 1)
     i2cDAC.max_speed_hz = (20000000)
 
