@@ -41,9 +41,7 @@ MCP3426_CMD_GAIN_8					= 0x03 # PGA Gain = 8V/V
 MCP3426_CMD_READ_CNVRSN				= 0x00 # Read Conversion Result Data
 
 
-class MCP3426():
-
-	
+class MCP3426_1():
 	def set_channel(self):
 		"""Select the Channel user want to use from 1-2"""
 		self.channel = int(input("Enter the Channel No. = "))
@@ -71,4 +69,16 @@ class MCP3426():
 		if raw_adc > 2047 :
 			raw_adc -= 4095
 		
-		return 
+		return {'r' : raw_adc}
+
+from MCP3426 import MCP3426
+mcp3426 = MCP3426()
+
+while True :
+	mcp3426.set_channel()
+	mcp3426.config_command()
+	time.sleep(0.1)
+	adc = mcp3426.read_adc()
+	print ("Digital Value of Analog Input : %d "%(adc['r']))
+	print (" ********************************* ")
+	time.sleep(0.8)
