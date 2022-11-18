@@ -34,7 +34,7 @@ time_count = 0
 
 print("IP Address: {0}".format(server.get_ip()))
 
-adc = MCP3426_1(1)
+adc = MCP3426_1()
 
 PRESSURE_LIMIT1 = 3.2   #元は3.13    
 PRESSURE_LIMIT2 = 3.2     
