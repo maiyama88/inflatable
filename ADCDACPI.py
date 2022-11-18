@@ -49,7 +49,7 @@ class MCP3426_1():
 		if channel == 1:
 			CONFIG_CMD_1 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_1)
 			bus.write_byte(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_1)
-		if channel == 2:
+		else:
 			CONFIG_CMD_2 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_2)
 			bus.write_byte(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_2)
 		
@@ -66,7 +66,7 @@ class MCP3426_1():
 				if raw_adc > 2047 :
 					raw_adc -= 4095
 
-		if channel == 2:
+		else:
 				CONFIG_CMD_2 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_2)
 				bus.write_byte(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_2)
 				raw_adc = ((data[0] & 0x0F) * 256) + data[1]
