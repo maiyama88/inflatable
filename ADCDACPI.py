@@ -43,20 +43,30 @@ MCP3426_CMD_READ_CNVRSN				= 0x00 # Read Conversion Result Data
 
 
 class MCP3426_1():
-
+    
 	def config_command(self, channel):
 		"""Select the Configuration Command from the given provided values"""
 		if channel == 1:
-			CONFIG_CMD = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_1)
+			CONFIG_CMD_1 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_1)
+			bus.write_byte1(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_1)
 		elif channel == 2:
-			CONFIG_CMD = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_2)
+			CONFIG_CMD_2 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_2)
+			bus.write_byte2(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_2)
 		
-		bus.write_byte(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD)
+		
 	
 	def read_adc(self, channel):
 		"""Read data back from MCP3426_CMD_READ_CNVRSN(0x00), 2 bytes
 		raw_adc MSB, raw_adc LSB"""
+		if channel == 1:
+			CONFIG_CMD_1 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_1)
+			bus.write_byte1(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_1)
+		elif channel == 2:
+			CONFIG_CMD_2 = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_2)
+			bus.write_byte2(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD_2)
+
 		data = bus.read_i2c_block_data(MCP3426_DEFAULT_ADDRESS, MCP3426_CMD_READ_CNVRSN, 2)
+
 		if channel == 1:
 			raw_adc = ((data[0] & 0x0F) * 256) + data[1]
 			if raw_adc > 2047 :
