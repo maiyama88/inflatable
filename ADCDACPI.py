@@ -43,32 +43,30 @@ MCP3426_CMD_READ_CNVRSN				= 0x00 # Read Conversion Result Data
 
 
 class MCP3426_1():
-	def set_channel(self):
-		"""Select the Channel user want to use from 1-2"""
-		self.channel = int(input("Enter the Channel No. = "))
-		while self.channel < 1 or self.channel > 2:
-			self.channel = int(input("Enter the Channel No. = "))
-		
-		return self.channel
-	
-	def config_command(self):
+
+	def config_command(self, channel):
 		"""Select the Configuration Command from the given provided values"""
-		if self.channel == 1:
+		if channel == 1:
 			CONFIG_CMD = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_1)
-		elif self.channel == 2:
+		elif channel == 2:
 			CONFIG_CMD = (MCP3426_CMD_MODE_CONT | MCP3426_CMD_SPS_240 | MCP3426_CMD_GAIN_1 | MCP3426_CMD_CHNL_2)
 		
 		bus.write_byte(MCP3426_DEFAULT_ADDRESS, CONFIG_CMD)
 	
-	def read_adc(self):
+	def read_adc(self, channel):
 		"""Read data back from MCP3426_CMD_READ_CNVRSN(0x00), 2 bytes
 		raw_adc MSB, raw_adc LSB"""
 		data = bus.read_i2c_block_data(MCP3426_DEFAULT_ADDRESS, MCP3426_CMD_READ_CNVRSN, 2)
-		
+		if channel == 1:
+			raw_adc = ((data[0] & 0x0F) * 256) + data[1]
+			if raw_adc > 2047 :
+				raw_adc -= 4095
+		if channel == 2:
+			raw_adc = ((data[0] & 0x0F) * 256) + data[1]
+			if raw_adc > 2047 :
+				raw_adc -= 4095
+		    
 		# Convert the data to 12-bits
-		raw_adc = ((data[0] & 0x0F) * 256) + data[1]
-		if raw_adc > 2047 :
-			raw_adc -= 4095
 		
 		return raw_adc
 # from MCP3426 import MCP3426
