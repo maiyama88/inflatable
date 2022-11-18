@@ -10,6 +10,7 @@ from __future__ import absolute_import, division, print_function, \
                                                     unicode_literals
 try:
     import MCP3426
+	# pass
 except ImportError:
     raise ImportError(
         "MCP3426 not found.")

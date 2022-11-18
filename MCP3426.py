@@ -58,14 +58,16 @@ class MCP3426():
 		
 		return {'r' : raw_adc}
 
-from MCP3426 import MCP3426
-mcp3426 = MCP3426()
+# from MCP3426 import MCP3426
 
-while True :
-	mcp3426.set_channel()
-	mcp3426.config_command()
-	time.sleep(0.1)
-	adc = mcp3426.read_adc()
-	print ("Digital Value of Analog Input : %d "%(adc['r']))
-	print (" ********************************* ")
-	time.sleep(0.8)
+
+if __name__ == "__main__":
+	mcp3426 = MCP3426()
+	while True :
+		mcp3426.set_channel()
+		mcp3426.config_command()
+		time.sleep(0.1)
+		adc = mcp3426.read_adc()
+		print ("Digital Value of Analog Input : %d "%(adc['r']))
+		print (" ********************************* ")
+		time.sleep(0.8)
