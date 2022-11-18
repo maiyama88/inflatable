@@ -82,7 +82,6 @@ class MCP3426_1():
 if __name__ == "__main__":
 	mcp3426_1 = MCP3426_1()
 	while True :
-		mcp3426_1.set_channel()
 		mcp3426_1.config_command()
 		time.sleep(0.1)
 		adc = mcp3426_1.read_adc()
