@@ -8,12 +8,12 @@ Based on the Microchip MCP3202  (new MCP3426)
 
 from __future__ import absolute_import, division, print_function, \
                                                     unicode_literals
-try:
-    import MCP3426
+#try:
+    #import MCP3426
 	# pass
-except ImportError:
-    raise ImportError(
-        "MCP3426 not found.")
+#except ImportError:
+    #raise ImportError(
+        #"MCP3426 not found.")
 
 
 
@@ -71,3 +71,16 @@ class MCP3426_1():
 			raw_adc -= 4095
 		
 		return raw_adc
+# from MCP3426 import MCP3426
+
+
+if __name__ == "__main__":
+	mcp3426_1 = MCP3426_1()
+	while True :
+		mcp3426_1.set_channel()
+		mcp3426_1.config_command()
+		time.sleep(0.1)
+		adc = mcp3426_1.read_adc()
+		print ("Digital Value of Analog Input : %d "%(adc['r']))
+		print (" ********************************* ")
+		time.sleep(0.8)
