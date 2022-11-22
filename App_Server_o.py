@@ -20,8 +20,7 @@ except ImportError:
         sys.path.append('..')
         from ADCDACPI_o import ADCDACPi
     except ImportError:
-        raise ImportError(
-            "Failed to import library from parent folder")
+        raise ImportError("Failed to import library from parent folder")
 
 LED_PIN = 22
 GPIO.setmode(GPIO.BCM)
