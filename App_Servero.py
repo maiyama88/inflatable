@@ -37,8 +37,8 @@ print("IP Address: {0}".format(server.get_ip()))
 adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
 
-#PRESSURE_LIMIT1 = 3.13
-PRESSURE_LIMIT = 3.2  #PRESSURE_LIMIT2 = 3.2
+PRESSURE_LIMIT1 = 3.13
+PRESSURE_LIMIT2 = 3.2
 
 def my_hex(a):
     if a < 0x10 and a >= 0x00:
@@ -73,7 +73,7 @@ if __name__ == '__main__':
                 sensor_val1 = (3.3 * (sensor_val1_1 -9) / (3322 - 9)) / 1000
                 sensor_val2_2 = adcdac.read_adc_voltage(2, 0)
                 sensor_val2 = (3.3 * (sensor_val2_2 -10) / (3312 - 10)) / 1000
-                if sensor_val2 > PRESSURE_LIMIT and cmd.Mode == 2:
+                if sensor_val2 > PRESSURE_LIMIT1 and cmd.Mode == 2:
                     cmd.idle_mode()
                     #if sensor_val2 > PRESSURE_LIMIT2 :
                     #cmd.vent_mode()
