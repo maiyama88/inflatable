@@ -98,7 +98,7 @@ class ADCDACPi(object):
         if (mode > 1) or (mode < 0):
             raise ValueError('read_adc_voltage: mode out of range')
         if mode == 0:
-            raw = self.spiADC.xfer2([1, (1 + 2*channel) << 5, 0])
+            raw = self.spiADC.xfer2([1, (1 + channel) << 6, 0])
             ret = ((raw[1] & 0x0F) << 8) + (raw[2])
         if mode == 1:
             if channel == 1:
