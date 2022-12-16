@@ -37,8 +37,8 @@ print("IP Address: {0}".format(server.get_ip()))
 adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
 
-PRESSURE_LIMIT1 = 3.2
-PRESSURE_LIMIT2 = 3.2
+PRESSURE_LIMIT1 = 3.3
+PRESSURE_LIMIT2 = 3.3
 
 def my_hex(a):
     if a < 0x10 and a >= 0x00:
