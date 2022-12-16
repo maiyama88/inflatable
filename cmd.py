@@ -124,12 +124,12 @@ def cmd_action(server):
     elif cmd_code_tmp == ord('0'):    ##  Idle Mode
         idle_mode()
         print("Idle Cmd")
-    elif cmd_code_tmp == ord('V'):    ##  Idle Mode
+    elif cmd_code_tmp == ord('V'):    ##  vent Mode
         vent_mode()
         print("Vent Cmd")
-    elif cmd_code_tmp == ord('I'):    ##  Idle Mode
+    elif cmd_code_tmp == ord('I'):    ##  Inflate Mode
         inf_mode()
-        print("Vent Cmd")
+        print("inflate Cmd")
     else:
         print("NA Cmd")
 
