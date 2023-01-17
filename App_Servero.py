@@ -4,6 +4,7 @@ from __future__ import absolute_import, division, print_function, \
 import sys
 import time
 import datetime
+import cmd_1
 import cmd
 from gpiozero import LED
 from struct import *
@@ -54,14 +55,14 @@ if __name__ == '__main__':
         ret = 0
 
         server.server_init()
-        cmd.cmd_init()
+        cmd_1.cmd_init()
 
         while True:
             server.server_loop()
             server_cmd = server.server_recv()
             if server_cmd != '':
                 print("CMD:",server_cmd)
-                ret = cmd.cmd_analyze(server_cmd,server)
+                ret = cmd_1.cmd_analyze(server_cmd,server)
 
 
             # PACKET SEND
@@ -72,8 +73,8 @@ if __name__ == '__main__':
                 sensor_val1 = adcdac.read_adc_voltage(1, 1)
                 sensor_val2 = adcdac.read_adc_voltage(2, 0)
                 
-                if sensor_val2 > PRESSURE_LIMIT1 and cmd.Mode == 2:
-                    cmd.idle_mode()
+                if sensor_val2 > PRESSURE_LIMIT1 and cmd_1.Mode == 2:
+                    cmd_1.idle_mode()
                     #if sensor_val2 > PRESSURE_LIMIT2 :
                     #cmd.vent_mode()
 
@@ -82,9 +83,9 @@ if __name__ == '__main__':
                 mes_byte = bytearray(b'TM')
                 tmp_bytes = pack(">i", tlm_time)
                 mes_byte.append(tmp_bytes[3])
-                tmp_bytes = pack(">i",cmd.cmd_count)
+                tmp_bytes = pack(">i",cmd_1.cmd_count)
                 mes_byte.append(tmp_bytes[3])
-                tmp_bytes = pack(">i",cmd.cmd_code)
+                tmp_bytes = pack(">i",cmd_1.cmd_code)
                 mes_byte.append(tmp_bytes[3])
 
                 # ADC IF
@@ -99,7 +100,7 @@ if __name__ == '__main__':
                 mes_byte.append(tmp_bytes[3])
                 print("CH2:",sensor_val2, sensor_val2_int, hex(tmp_bytes[0]), hex(tmp_bytes[1]), hex(tmp_bytes[2]), hex(tmp_bytes[3]))
 
-                tmp_bytes = pack(">i", cmd.Mode)
+                tmp_bytes = pack(">i", cmd_1.Mode)
                 mes_byte.append(tmp_bytes[3])
 
                 mes_byte.extend(b'\r\n')
