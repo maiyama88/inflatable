@@ -70,7 +70,7 @@ if __name__ == '__main__':
             #if (time_count % 5000) == 0:
             if (time_count % 5000) == 0:
                 # Pressure Check
-                sensor_val1 = adcdac.read_adc_voltage(1, 0)   #元は1,1
+                sensor_val1 = adcdac.read_adc_voltage(1, 1)   
                 sensor_val2 = adcdac.read_adc_voltage(2, 0)
                 
                 if sensor_val2 > PRESSURE_LIMIT1 and cmd_1.Mode == 2:
