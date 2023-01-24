@@ -75,6 +75,8 @@ if __name__ == '__main__':
                 
                 if sensor_val2 > PRESSURE_LIMIT1 and cmd_1.Mode == 2:
                     cmd_1.idle_mode()
+                if sensor_val1 > PRESSURE_LIMIT1 and cmd_1.Mode == 2:
+                    cmd_1.idle_mode()
                     #if sensor_val2 > PRESSURE_LIMIT2 :
                     #cmd.vent_mode()
 
