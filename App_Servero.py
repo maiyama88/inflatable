@@ -39,7 +39,7 @@ adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
 
 PRESSURE_LIMIT1 = 3.3  #元は3.3
-PRESSURE_LIMIT2 = 3.0
+PRESSURE_LIMIT2 = 3.2
 
 
 
