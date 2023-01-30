@@ -76,7 +76,7 @@ if __name__ == '__main__':
                 sensor_val2 = adcdac.read_adc_voltage(2, 0)
                 
                 
-                    #if sensor_val2 > PRESSURE_LIMIT2 :
+                #if sensor_val2 > PRESSURE_LIMIT2 :
                     #cmd.vent_mode()
 
                 tlm_time = int(time.time()) - tlm_time_start
