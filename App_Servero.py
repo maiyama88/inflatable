@@ -38,8 +38,8 @@ print("IP Address: {0}".format(server.get_ip()))
 adcdac = ADCDACPi(1)
 adcdac.set_adc_refvoltage(3.3)
 
-PRESSURE_LIMIT1 = 3.3  #元は3.3
-PRESSURE_LIMIT2 = 3.2
+#PRESSURE_LIMIT1 = 3.3  #元は3.3
+
 
 
 
@@ -75,10 +75,7 @@ if __name__ == '__main__':
                 sensor_val1 = adcdac.read_adc_voltage(1, 0)   #元は1,1
                 sensor_val2 = adcdac.read_adc_voltage(2, 0)
                 
-                if sensor_val2 > PRESSURE_LIMIT1 and cmd_1.Mode == 2:
-                    cmd_1.idle_mode()
-                if sensor_val1 > PRESSURE_LIMIT2 and cmd_1.Mode == 2:   #変更箇所
-                    cmd_1.idle_mode()
+                
                     #if sensor_val2 > PRESSURE_LIMIT2 :
                     #cmd.vent_mode()
 
