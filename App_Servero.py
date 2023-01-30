@@ -75,6 +75,8 @@ if __name__ == '__main__':
                 sensor_val1 = adcdac.read_adc_voltage(1, 0)   #元は1,1
                 sensor_val2 = adcdac.read_adc_voltage(2, 0)
                 
+                #if sensor_val2 > PRESSURE_LIMIT1 and cmd_1.Mode == 2 :
+                    #cmd.idle_mode()
                 
                 #if sensor_val2 > PRESSURE_LIMIT2 :
                     #cmd.vent_mode()
